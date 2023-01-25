@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Space-Invaders</title>
+  </head>
+  <body onload="onInit()" onkeyup="moveHero(event)">
+    <h1>Space-Invaders</h1>
+
+    <div class="container">
+      <p class="score">Score: <span>0</span></p>
+      <table>
+        <tbody class="board"></tbody>
+      </table>
+    </div>
+
+    <script src="js/util.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/alien.js"></script>
+    <script src="js/hero.js"></script>
+  </body>
+</html>

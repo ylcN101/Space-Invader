@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #f1f1f1;
+}
+
+table {
+    margin: auto;
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+}
+
+
+.container{
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+
+}
+
+.board{
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin: 50px 0;
+}
