@@ -24,76 +24,8 @@ function createAliens(board) {
       gGame.alienCount++
     }
   }
-  gAlienInterval = setInterval(moveAliens, ALIEN_SPEED)
+  // gAlienInterval = setInterval(moveAliens, ALIEN_SPEED)
 }
 
 var gAliensTopRowIdx = 0
 var gAliensBottomRowIdx = ALIENS_ROW_COUNT - 1
-
-function isAliensReachRightEdge() {
-  for (var i = gAliensTopRowIdx; i <= gAliensBottomRowIdx; i++) {
-    if (gBoard[i][gBoard[0].length - 1].gameObject) return true
-  }
-  return false
-}
-
-function isAliensReachLeftEdge() {
-  for (var i = gAliensTopRowIdx; i <= gAliensBottomRowIdx; i++) {
-    if (gBoard[i][0].gameObject) return true
-  }
-  return false
-}
-
-function isAliensRowEmpty(rowIdx) {
-  for (var j = 0; j < gBoard[0].length; j++) {
-    if (gBoard[rowIdx][j].gameObject) return false
-  }
-  return true
-}
-
-function shiftAliensRight() {
-  for (var i = gAliensTopRowIdx; i <= gAliensBottomRowIdx; i++) {
-    for (var j = gBoard[0].length - 1; j > 0; j--) {
-      if (gBoard[i][j].gameObject && gBoard[i][j].gameObject.type === ALIEN) {
-        updateCell({ i, j }, '')
-        updateCell({ i, j: j + 1 }, ALIEN)
-      }
-    }
-  }
-}
-
-function shiftAliensLeft() {
-  for (var i = gAliensTopRowIdx; i <= gAliensBottomRowIdx; i++) {
-    for (var j = 0; j < gBoard[0].length; j++) {
-      if (gBoard[i][j].gameObject && gBoard[i][j].gameObject.type === ALIEN) {
-        updateCell({ i, j }, '')
-        updateCell({ i, j: j - 1 }, ALIEN)
-      }
-    }
-  }
-}
-
-function shiftAliensDown() {
-  for (var i = gAliensBottomRowIdx; i >= gAliensTopRowIdx; i--) {
-    for (var j = 0; j < gBoard[0].length; j++) {
-      if (gBoard[i][j].gameObject && gBoard[i][j].gameObject.type === ALIEN) {
-        updateCell({ i, j }, '')
-        updateCell({ i: i + 1, j }, ALIEN)
-      }
-    }
-  }
-
-  updateAliensRowsIdx()
-}
-
-function moveAliens() {
-  if (isAliensReachRightEdge()) {
-    shiftAliensDown()
-    shiftAliensLeft()
-  } else if (isAliensReachLeftEdge()) {
-    shiftAliensDown()
-    shiftAliensRight()
-  } else {
-    shiftAliensRight()
-  }
-}
