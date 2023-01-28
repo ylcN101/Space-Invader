@@ -1,27 +1,39 @@
-'use strict'
-
-function getElCell(pos) {
-  return document.querySelector(`.cell${pos.i}-${pos.j}`)
+function createCell(gameObject = null) {
+  return {
+    type: '',
+    gameObject,
+  }
 }
 
-function getNextPos(pos, ev) {
-  var nextPos = {
-    i: pos.i,
-    j: pos.j,
-  }
-  switch (ev.key) {
-    case 'ArrowLeft':
-      nextPos.j--
-      break
-    case 'ArrowRight':
-      nextPos.j++
+function updateCell(pos, gameObject = null) {
+  gBoard[pos.i][pos.j].gameObject = gameObject
+  var elCell = getElCell(pos)
+  elCell.innerHTML = gameObject || ''
+}
 
-      break
-    case ' ':
-      shoot()
-      console.log('shoot')
+function getElCell(pos) {
+  return document.querySelector(`[data-i='${pos.i}'][data-j='${pos.j}']`)
+}
 
-      break
-  }
-  return nextPos
+function updateScore(diff) {
+  gGame.score += diff
+  document.querySelector('.score span ').innerText = gGame.score
+}
+
+function getLocationForCandies() {
+  //find a random location on the first row
+  var i = 0
+  var j = getRandomIntInclusive(0, BOARD_SIZE - 2)
+  return [i, j]
+}
+
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function updateCountSuperLaser() {
+  var elSuperLaser = document.querySelector('.super-laser span')
+  elSuperLaser.innerText = gHero.superLaserCount
 }

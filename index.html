@@ -5,21 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Space-Invaders</title>
+    <title>Space Invaders</title>
   </head>
-  <body onload="onInit()" onkeyup="moveHero(event)">
-    <h1>Space-Invaders</h1>
-
+  <body onload="onInit()" onkeyup="onHandleKey(event)">
+    <div class="header">
+      <h1>Space Invaders</h1>
+      <h2>Press 'X' For Laser Shot</h2>
+      <h2>Press 'N' For Special Shot</h2>
+      <h2>Press 'Z' For Shield</h2>
+    </div>
     <div class="container">
-      <p class="score">Score: <span>0</span></p>
+      <div class="info">
+        <div class="score">Score: <span>0</span></div>
+        <div class="super-laser">Super-Laser Ammo: <span>3</span></div>
+        <div class="lives">Life: <span>3</span></div>
+        <div class="shield-count">Shield Count: <span>3</span></div>
+      </div>
+
+      <div class="modal">
+        <h3 class="modal-text"></h3>
+        <button class="restart-btn" onclick="onRestart(this)">
+          <span>Restart!</span>
+        </button>
+      </div>
+
       <table>
         <tbody class="board"></tbody>
       </table>
     </div>
 
-    <script src="js/util.js"></script>
-    <script src="js/game.js"></script>
-    <script src="js/alien.js"></script>
+    <script src="js/aliens.js"></script>
+    <script src="js/app.js"></script>
     <script src="js/hero.js"></script>
+    <script src="js/util.js"></script>
   </body>
 </html>
